@@ -20,6 +20,10 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         console.log("User added:", data);
+        if (data.insertedId) {
+          alert("User added successfully!");
+          form.reset();
+        }
       })
       .catch((error) => {
         console.error("Error adding user:", error);

@@ -32,9 +32,15 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
 
+    // Connect to the "usersDB" database and access its "users" collection
+    const database = client.db("usersDB");
+    const usersCollection = database.collection("users");
+
     app.post("/users", async (req, res) => {
       const user = req.body;
       console.log("Received user:", user);
+      const result = await usersCollection.insertOne(user);
+      res.send(result);
     });
 
     // Send a ping to confirm a successful connection
