@@ -9,8 +9,8 @@ const Update = () => {
   const handleUpdateUser = (event) => {
     event.preventDefault();
     const form = event.target;
-    const name = form.elements.name.value; // Correct way to access form values
-    const email = form.elements.email.value; // Correct way to access form values
+    const name = form.elements.name.value;
+    const email = form.elements.email.value;
     console.log("Updating user:", { name, email });
     const updatedUser = { name, email };
 
@@ -19,7 +19,7 @@ const Update = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ updatedUser }), // Send updated user data
+      body: JSON.stringify(updatedUser), // Send name and email directly
     })
       .then((res) => res.json())
       .then((data) => {
