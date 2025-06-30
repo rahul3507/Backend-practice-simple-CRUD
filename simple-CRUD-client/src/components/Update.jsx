@@ -12,6 +12,19 @@ const Update = () => {
     const name = form.elements.name.value; // Correct way to access form values
     const email = form.elements.email.value; // Correct way to access form values
     console.log("Updating user:", { name, email });
+    const updatedUser = { name, email };
+
+    fetch(`http://localhost:5000/users/${loadedUser._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ updatedUser }), // Send updated user data
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("User updated:", data);
+      });
   };
 
   return (
