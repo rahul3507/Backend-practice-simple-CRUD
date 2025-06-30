@@ -23,6 +23,9 @@ const router = createBrowserRouter([
       return res.json();
     },
   },
+  {
+    path: "/update/:id",
+  },
 ]);
 createRoot(document.getElementById("root")).render(
   <StrictMode>

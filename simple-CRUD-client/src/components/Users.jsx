@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 export const Users = () => {
   const loadedUsers = useLoaderData();
@@ -35,6 +35,7 @@ export const Users = () => {
         {users.map((user) => (
           <li key={user._id}>
             {user._id} - {user.name} - {user.email}
+            <Link to={`/update/${user._id}`}>Update</Link>
             <button onClick={() => handleDeleteUser(user._id)}>X</button>
           </li>
         ))}
